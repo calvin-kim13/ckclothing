@@ -1,9 +1,41 @@
 .sign-up-container {
   display: flex;
   flex-direction: column;
-  width: 380px;
+  justify-content: center;
+  width: 440px;
+  padding: 2rem;
+  margin: 0 auto;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 10px 20px 25px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
 
-  h2 {
-    margin: 10px 0;
+  h1 {
+    margin: 10px auto;
+    font-weight: bold;
+  }
+
+  span {
+    margin: 0 auto;
+  }
+
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .signin-redirect-container {
+    margin-top: 3rem;
+    text-align: center;
+
+    a {
+      color: rgb(61, 94, 202);
+      opacity: 0.8;
+      text-decoration: underline;
+      transition: 0.2s ease-in-out all;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 1;
+    }
   }
 }

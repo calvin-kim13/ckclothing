@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,
@@ -15,6 +16,7 @@ const defaultFormFields = {
 const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+  const navigate = useNavigate();
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -22,6 +24,7 @@ const SignIn = () => {
 
   const signInWithGoogle = async () => {
     await signInWithGooglePopup();
+    await navigate(-1);
   };
 
   const handleSubmit = async (e) => {
@@ -51,9 +54,9 @@ const SignIn = () => {
   };
 
   return (
-    <div className="sign-up-container">
-      <h2>Already have an account?</h2>
-      <span>Sign in with your email and password</span>
+    <div className="sign-in-container">
+      <h1>Sign In</h1>
+      <span>Sign in with your email or sign in with google!</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Email"
@@ -80,6 +83,11 @@ const SignIn = () => {
           </Button>
         </div>
       </form>
+      <div className="signup-redirect-container">
+        <h4>
+          Don't have an account? <Link to="/signup">Sign up here!</Link>
+        </h4>
+      </div>
     </div>
   );
 };

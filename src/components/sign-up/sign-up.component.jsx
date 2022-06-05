@@ -2,10 +2,12 @@ import { useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
+  signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
 import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 import "./sign-up.styles.scss";
+import { Link } from "react-router-dom";
 
 const defaultFormFields = {
   displayName: "",
@@ -19,6 +21,10 @@ const SignUp = () => {
   const { displayName, email, password, confirmPassword } = formFields;
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
+  };
+
+  const signInWithGoogle = async () => {
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (e) => {
@@ -53,11 +59,11 @@ const SignUp = () => {
 
   return (
     <div className="sign-up-container">
-      <h2>Don't have an account?</h2>
+      <h1>Don't have an account?</h1>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
-          label="Display Name"
+          label="Name"
           type="text"
           required
           onChange={handleChange}
@@ -92,8 +98,18 @@ const SignUp = () => {
           value={confirmPassword}
         />
 
-        <Button type="submit">Sign up</Button>
+        <div className="buttons-container">
+          <Button type="submit">Sign up</Button>
+          <Button type="button" buttonType="google" onClick={signInWithGoogle}>
+            Google sign in
+          </Button>
+        </div>
       </form>
+      <div className="signin-redirect-container">
+        <h4>
+          Already have an account? <Link to="/login">Sign in here!</Link>
+        </h4>
+      </div>
     </div>
   );
 };
