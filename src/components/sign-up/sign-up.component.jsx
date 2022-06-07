@@ -8,6 +8,8 @@ import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 import "./sign-up.styles.scss";
 import { Link } from "react-router-dom";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const defaultFormFields = {
   displayName: "",
@@ -17,6 +19,7 @@ const defaultFormFields = {
 };
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
   const resetFormFields = () => {
@@ -31,7 +34,7 @@ const SignUp = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("passwords do not match");
+      message.error("Passwords do not match");
       return;
     }
 
@@ -41,13 +44,23 @@ const SignUp = () => {
         password
       );
 
+      const hide = message.loading("Creating account...", 0);
+      setTimeout(hide, 500);
+
       await createUserDocumentFromAuth(user, { displayName });
+
+      await navigate("/");
       resetFormFields();
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        alert("Cannot create user, email already in use");
-      } else {
-        console.log("user creation encountered an error", error);
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          message.error("Email already in use");
+          break;
+        case "auth/weak-password":
+          message.error("Password must be at least 6 characters long");
+          break;
+        default:
+          console.log("user creation encountered an error", error);
       }
     }
   };

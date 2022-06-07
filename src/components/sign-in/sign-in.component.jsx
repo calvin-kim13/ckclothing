@@ -1,3 +1,4 @@
+import { message } from "antd";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -31,16 +32,21 @@ const SignIn = () => {
     e.preventDefault();
 
     try {
+      const hide = message.loading("Logging in...", 0);
+      setTimeout(hide, 300);
+
       await signInAuthUserWithEmailAndPassword(email, password);
+
+      await navigate("/");
 
       resetFormFields();
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
-          alert("incorrect password for email");
+          message.error("Incorrect password");
           break;
         case "auth/user-not-found":
-          alert("no user associated with this email");
+          message.error("No user associated with this email");
           break;
         default:
           console.log(error);

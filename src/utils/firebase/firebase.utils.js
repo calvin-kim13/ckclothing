@@ -80,8 +80,11 @@ export const createUserDocumentFromAuth = async (
   const userSnapshot = await getDoc(userDocRef);
 
   if (!userSnapshot.exists()) {
-    const { displayName, email } = userAuth; // userAuth is called in sign in component and it is passed with the user data from the google sign in and it comes with displayName and email...console log userAuth in here or console log user in sign in to see
+    const { email } = userAuth; // userAuth is called in sign in component and it is passed with the user data from the google sign in and it comes with displayName and email...console log userAuth in here or console log user in sign in to see
+    const { displayName } = additionalInformation;
     const createdAt = new Date();
+
+    console.log(additionalInformation);
 
     try {
       await setDoc(userDocRef, {

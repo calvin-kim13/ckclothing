@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import { UserContext } from "../../contexts/user.context";
 import { useNavigate } from "react-router-dom";
+import { notification } from "antd";
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
@@ -13,9 +14,17 @@ const ProductCard = ({ product }) => {
 
   const navigate = useNavigate();
 
-  const addProductToCart = () => {
+  const openNotification = () => {
+    notification.open({
+      message: "Added item to cart",
+      duration: 1,
+    });
+  };
+
+  const addProductToCart = async () => {
     if (currentUser) {
-      addItemToCart(product);
+      await addItemToCart(product);
+      await openNotification();
       return;
     } else {
       navigate("/login");
