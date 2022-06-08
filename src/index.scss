@@ -1,9 +1,16 @@
 @import "~antd/dist/antd.css";
 
+:root {
+  --blue: #5c94fc;
+  --blueHover: #2c6fec;
+  --light: rgb(161, 161, 161);
+  --lightHover: #666666;
+}
+
 body {
   margin: 0;
   // padding: 20px 40px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

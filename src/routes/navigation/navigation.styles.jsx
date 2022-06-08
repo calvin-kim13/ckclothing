@@ -8,8 +8,7 @@ export const NavigationContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 25px;
-  -webkit-box-shadow: 0px 5px 9px 0px #555555;
-  box-shadow: 0px 5px 9px 0px #969595;
+  background-color: var(--blue);
   padding: 2rem;
 `;
 
@@ -17,6 +16,13 @@ export const LogoContainer = styled(Link)`
   height: 100%;
   width: 70px;
   font-size: 2rem;
+  color: #fff;
+  opacity: 0.9;
+
+  &:hover {
+    color: #fff;
+    opacity: 1;
+  }
 `;
 
 export const NavLinks = styled.div`
@@ -25,9 +31,17 @@ export const NavLinks = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  color: #fff;
 `;
 
 export const NavLink = styled(Link)`
   padding: 15px 20px;
   cursor: pointer;
+  color: #fff;
+  opacity: 0.8;
+
+  &:hover {
+    color: #fff;
+    opacity: 1;
+  }
 `;

@@ -1,5 +1,5 @@
 .category-page-wrapper {
-  padding: 3rem;
+  padding: 0 3rem 10rem;
 }
 
 .category-container {
@@ -7,4 +7,9 @@
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
   row-gap: 50px;
+  padding-top: 1rem;
+}
+
+.ant-page-header-heading-title {
+  font-size: 1.8rem;
 }

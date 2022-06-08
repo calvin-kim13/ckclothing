@@ -71,57 +71,63 @@ const SignUp = () => {
   };
 
   return (
-    <div className="sign-up-container">
-      <h1>Don't have an account?</h1>
-      <span>Sign up with your email and password</span>
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          label="Name"
-          type="text"
-          required
-          onChange={handleChange}
-          name="displayName"
-          value={displayName}
-        />
+    <div className="sign-up-wrapper">
+      <div className="sign-up-container">
+        <h1>Don't have an account?</h1>
+        <span>Sign up with your email and password</span>
+        <form onSubmit={handleSubmit}>
+          <FormInput
+            label="Name"
+            type="text"
+            required
+            onChange={handleChange}
+            name="displayName"
+            value={displayName}
+          />
 
-        <FormInput
-          label="Email"
-          type="email"
-          required
-          onChange={handleChange}
-          name="email"
-          value={email}
-        />
+          <FormInput
+            label="Email"
+            type="email"
+            required
+            onChange={handleChange}
+            name="email"
+            value={email}
+          />
 
-        <FormInput
-          label="Password"
-          type="password"
-          required
-          onChange={handleChange}
-          name="password"
-          value={password}
-        />
+          <FormInput
+            label="Password"
+            type="password"
+            required
+            onChange={handleChange}
+            name="password"
+            value={password}
+          />
 
-        <FormInput
-          label="Confirm Password"
-          type="password"
-          required
-          onChange={handleChange}
-          name="confirmPassword"
-          value={confirmPassword}
-        />
+          <FormInput
+            label="Confirm Password"
+            type="password"
+            required
+            onChange={handleChange}
+            name="confirmPassword"
+            value={confirmPassword}
+          />
 
-        <div className="buttons-container">
-          <Button type="submit">Sign up</Button>
-          <Button type="button" buttonType="google" onClick={signInWithGoogle}>
-            Google sign in
-          </Button>
+          <div className="buttons-container">
+            <Button type="submit">Sign up</Button>
+            <Button
+              type="button"
+              buttonType="google"
+              onClick={signInWithGoogle}
+            >
+              Google sign in
+            </Button>
+          </div>
+        </form>
+        <div className="signin-redirect-container">
+          <h4>
+            Already have an account? <Link to="/login">Sign in here!</Link>
+          </h4>
         </div>
-      </form>
-      <div className="signin-redirect-container">
-        <h4>
-          Already have an account? <Link to="/login">Sign in here!</Link>
-        </h4>
       </div>
     </div>
   );

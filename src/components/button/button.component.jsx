@@ -13,7 +13,7 @@ const Button = ({ children, isLoading, buttonType, ...otherProps }) => {
       className={`button-container ${BUTTON_TYPES_CLASSES[buttonType]}`}
       {...otherProps}
     >
-      {isLoading ? <Spinner /> : children}
+      {isLoading ? <Spinner /> : <span>{children}</span>}
     </button>
   );
 };

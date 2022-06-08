@@ -1,3 +1,7 @@
+.sign-up-wrapper {
+  padding: 3rem;
+}
+
 .sign-up-container {
   display: flex;
   flex-direction: column;
@@ -21,7 +25,7 @@
 
   .buttons-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   .signin-redirect-container {
     margin-top: 3rem;

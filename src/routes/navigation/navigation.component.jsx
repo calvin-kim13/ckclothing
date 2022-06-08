@@ -54,11 +54,7 @@ const Navigation = () => {
         {
           key: "2",
           danger: true,
-          label: (
-            <NavLink as="span" onClick={modal}>
-              Sign Out
-            </NavLink>
-          ),
+          label: <span onClick={modal}>Sign Out</span>,
         },
       ]}
     />
@@ -75,12 +71,12 @@ const Navigation = () => {
           <NavLink to="/shop">Shop</NavLink>
           {currentUser ? (
             <Dropdown overlay={menu}>
-              <div onClick={(e) => e.preventDefault()}>
+              <NavLink as="span" onClick={(e) => e.preventDefault()}>
                 <Space>
                   Account
                   <DownOutlined />
                 </Space>
-              </div>
+              </NavLink>
             </Dropdown>
           ) : (
             <NavLink to="/login">Sign In</NavLink>
